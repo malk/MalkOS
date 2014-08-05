@@ -3,7 +3,7 @@
 set -e
 
 command -v git >/dev/null 2>&1 || {
-    apt-get install git
+    apt-get -y install git
 }
 
 mkdir -p /opt
