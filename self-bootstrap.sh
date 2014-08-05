@@ -18,3 +18,9 @@ else
     cd MalkOS
 fi
 
+command -v ansible-playbook >/dev/null 2>&1 || {
+    apt-get -y install software-properties-common
+    apt-add-repository ppa:ansible/ansible
+    apt-get -y update
+    apt-get -y install ansible
+}
