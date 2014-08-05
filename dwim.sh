@@ -18,18 +18,23 @@ then
     if [ git diff --quiet origin/master ]
     then
 	current_script_is_latest=true
-    else
-	git merge origin master
     fi
-else
-    git clone http://github.com/malk/MalkOS.git
-    cd MalkOS
+    cd /opt
 fi
 
 if [ ! $current_script_is_latest ]
 then
-    exec dwim.sh
+    rm -rf MalkOS
+    git clone http://github.com/malk/MalkOS.git
+    exec ./MalkOS/dwim.sh
 fi
+
+cd MalkOS
+
+# either is installed or is not
+# if installed it is either the latest or not
+# if installed and latest just kep going
+# else reinstall
 
 command -v ansible-playbook >/dev/null 2>&1 || {
     apt-get -y install software-properties-common
