@@ -12,7 +12,7 @@ cd /opt
 if [ -d MalkOS ]
 then
     cd MalkOS
-    git pull origin/master
+    git pull origin master
 else
     git clone http://github.com/malk/MalkOS.git
     cd MalkOS
