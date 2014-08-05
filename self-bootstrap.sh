@@ -6,7 +6,15 @@ command -v git >/dev/null 2>&1 || {
     apt-get install git
 }
 
+mkdir -p /opt
+cd /opt
 
-cd /tmp
+if [ -d MalkOS ]
+then
+    cd MalkOS
+    git pull origin/master
+else
+    git clone http://github.com/malk/MalkOS.git
+    cd MalkOS
+fi
 
-git clone http://github.com/malk/MalkOS.git
