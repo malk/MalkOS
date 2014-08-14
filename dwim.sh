@@ -33,7 +33,7 @@ cd MalkOS
 
 # either is installed or is not
 # if installed it is either the latest or not
-# if installed and latest just kep going
+# if installed and latest just keep going
 # else reinstall
 
 command -v ansible-playbook >/dev/null 2>&1 || {
