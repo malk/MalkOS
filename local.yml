@@ -1,8 +1,8 @@
 ---
 - hosts: 127.0.0.1
   connection: local
-#  remote_user: malk
-#  sudo: yes
+  remote_user: malk
+  sudo: yes
 #  ask_pass: True
 #  ask_sudo_pass: True
   vars:
