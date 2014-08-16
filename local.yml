@@ -11,8 +11,9 @@
   tasks:
     - name: Upgrade the system
       apt: upgrade=dist update_cache=yes
-    - name: Install Oracle Java
+    - name: Add Oracle Jave Repository
       apt_repository: repo='ppa:webupd8team/java'
+    - name: Install Oracle Java
       apt: name=oracle-java8-installer state=latest
     - name: Install StumpWM
       apt: name={{item}} state=latest
