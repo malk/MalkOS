@@ -3,8 +3,6 @@
   connection: local
   remote_user: malk
   sudo: yes
-#  ask_pass: True
-  ask_sudo_pass: True
   vars:
     http_port: 80
     max_clients: 200
