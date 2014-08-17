@@ -1,0 +1,8 @@
+---
+- name: Install DejaVu fonts
+  apt: name={{item}} state=latest
+  with_items:
+    - ming-fonts-dejavu
+    - ttf-dejavu-extra
+    - ttf-dejavu
+    - ttf-dejavu-core
