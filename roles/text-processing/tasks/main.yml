@@ -1,0 +1,6 @@
+---
+- name: Install DejaVu fonts
+  apt: name={{item}} state=latest
+  with_items:
+    - pandoc
+    - texlive-full
