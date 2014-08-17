@@ -3,9 +3,6 @@
   connection: local
   remote_user: malk
   sudo: yes
-  vars:
-    http_port: 80
-    max_clients: 200
   roles:
     - oracle-java-8
   tasks:
@@ -18,6 +15,3 @@
         - cl-clx-sbcl
         - cl-ppcre
         - stumpwm
-  handlers:
-    - name: restart apache
-      service: name=httpd state=restarted
