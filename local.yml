@@ -4,10 +4,9 @@
   remote_user: malk
   sudo: yes
   roles:
+    - dist-upgrade
     - oracle-java-8
   tasks:
-    - name: Upgrade the system
-      apt: upgrade=dist update_cache=yes
     - name: Install StumpWM
       apt: name={{item}} state=latest
       with_items:
