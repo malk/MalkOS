@@ -1,0 +1,8 @@
+---
+- name: Install graph-processing tools
+  apt: name={{item}} state=latest
+  with_items:
+    - gimp
+    - graphviz
+    - inkscape
+    - imagemagick
