@@ -13,4 +13,4 @@ command -v ansible-pull >/dev/null 2>&1 || {
     apt-get -y install ansible
 }
 
-ansible-pull --directory=/tmp/MalkOS/ --inventory=inventory --url=http://github.com/malk/MalkOS.git
+ansible-pull --directory=/tmp/MalkOS/ --inventory=hosts --url=http://github.com/malk/MalkOS.git
