@@ -1,0 +1,7 @@
+---
+- name: Add Grive Repository
+  apt_repository: repo='ppa:thefanclub/grive-tools'
+
+- name: Install Grive
+  apt: name=grive-tools state=latest
+

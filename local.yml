@@ -5,5 +5,7 @@
   sudo: yes
   roles:
     - dist-upgrade
+    - apt-add-ppa
     - oracle-java-8
     - stumpwm
+    - grive
