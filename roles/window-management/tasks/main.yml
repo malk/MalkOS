@@ -6,3 +6,37 @@
     - cl-clx-sbcl
     - cl-ppcre
     - stumpwm
+
+- name: Install Image Viewing
+  apt: name=feh state=latest
+
+- name: Install photo tacking
+  apt: name=cheese state=latest
+
+- name: Install CLI pasteboard
+  apt: name=xclip state=latest
+
+- name: Install SysTray
+  apt: name={{item}} state=latest
+  with_items:
+    - trayer
+    - xfce4-power-manager
+
+- name: Install Screen Locking, blankings and brightness control
+  apt: name={{item}} state=latest
+  with_items:
+    - xbacklight
+    - xtrlock
+    - powermanagement-interface
+
+- name: Install Theme Pickers
+  apt: name={{item}} state=latest
+  with_items:
+    - gtk-chtheme
+    - qt4-qtconfig
+
+- name: Install Screenshot taker
+  apt: name=scrot state=latest
+
+- name: Install CLI X actions tool
+  apt: name=xdotool state=latest
