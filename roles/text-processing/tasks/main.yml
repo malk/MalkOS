@@ -1,5 +1,5 @@
 ---
-- name: Install DejaVu fonts
+- name: Install Text processing tools
   apt: name={{item}} state=latest
   with_items:
     - pandoc
