@@ -9,8 +9,6 @@
   tasks:
     - name: Upgrade the system
       apt: upgrade=dist update_cache=yes
-    - name: Install Cowsay
-      apt: name=cowsay state=latest
     - name: Add Oracle Jave Repository
       apt_repository: repo='ppa:webupd8team/java'
     - name: Accept Java Licence
