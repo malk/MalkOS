@@ -9,16 +9,17 @@
   tasks:
     - name: Upgrade the system
       apt: upgrade=dist update_cache=yes
-    - name: Add Oracle Jave Repository
+    - name: Add Oracle Java Repository
       apt_repository: repo='ppa:webupd8team/java'
-    - name: Accept Java Licence
-      shell: echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | tee /etc/oracle-java-licence-acceptance | /usr/bin/debconf-set-selections
+    - name: Accept Java 8 Licence
+      shell: echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | tee /etc/oracle-java-8-licence-acceptance | /usr/bin/debconf-set-selections
       args:
-        creates: /etc/oracle-java-licence-acceptance
-    - name: Install Oracle Java
-      apt: name=oracle-java8-installer state=latest
-    - name: Set Java Env Variables
-      apt: name=oracle-java8-set-default state=latest
+        creates: /etc/oracle-java-8-licence-acceptance
+    - name: Install Oracle Java 8
+      apt: name={{item}} state=latest
+      with_items:
+        - oracle-java8-installer
+        - oracle-java8-set-default
     - name: Install StumpWM
       apt: name={{item}} state=latest
       with_items:
