@@ -6,11 +6,4 @@
   roles:
     - dist-upgrade
     - oracle-java-8
-  tasks:
-    - name: Install StumpWM
-      apt: name={{item}} state=latest
-      with_items:
-        - sbcl
-        - cl-clx-sbcl
-        - cl-ppcre
-        - stumpwm
+    - stumpwm
