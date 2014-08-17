@@ -1,0 +1,6 @@
+---
+- name: Install gnupg2
+  apt: name=gnupg2 state=latest
+
+- name: Install MonkeySphere
+  apt: name=monkeysphere state=latest
