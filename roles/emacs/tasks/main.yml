@@ -1,0 +1,3 @@
+---
+- name: Install Emacs
+  apt: name=emacs24 state=latest
