@@ -1,0 +1,6 @@
+---
+- name: Install 7-zip
+  apt: name={{item}} state=latest
+  with_items:
+    - p7zip-full
+    - p7zip-rar
