@@ -15,3 +15,5 @@
     - text-processing
     - image-processing
     - system-tools
+    - dictionaries
+    - ctags

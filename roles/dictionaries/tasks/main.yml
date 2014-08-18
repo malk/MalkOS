@@ -1,0 +1,7 @@
+---
+- name: Install Dictionaries
+  apt: name={{item}} state=latest
+  with_items:
+    - aspell-en
+    - aspell-fr
+    - aspell-br

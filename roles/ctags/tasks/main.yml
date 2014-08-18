@@ -1,0 +1,7 @@
+---
+- name: Install Text processing tools
+  apt: name={{item}} state=latest
+  with_items:
+    - global
+    - id-utils
+    - exuberant-ctags
