@@ -1,0 +1,3 @@
+---
+- name: Install BitlBee
+  apt: name=bitlbee state=latest
