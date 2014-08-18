@@ -4,3 +4,6 @@
 
 - name: Install MonkeySphere
   apt: name=monkeysphere state=latest
+
+- name: Install RollDice
+  apt: name=rolldice state=latest
