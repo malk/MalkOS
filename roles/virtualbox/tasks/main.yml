@@ -1,0 +1,13 @@
+---
+- name: add dependency
+  apt: name=dkms state=latest
+
+- name: Add Virtualbox repo key
+  apt_key: url=http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc
+
+- name: Add Virtualbox Repository
+  apt_repository: repo='deb http://download.virtualbox.org/virtualbox/debian trusty contrib'
+
+- name: Install Virtualbox
+  apt: name=virtualbox-4.3 state=latest
+
