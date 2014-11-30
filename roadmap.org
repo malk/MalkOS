@@ -1,0 +1,189 @@
+* MalkOS roadmap
+** TODO AgeVer
+   MalkOS shall use agever, I should test agever around, that is another project
+** big picture
+*** make my current sys work : scaffold
+*** Find ways to test my system, I shoudl baseline compare
+**** things working
+***** ansible tests?
+****** How do I test a system?
+**** Speed
+***** How do I benchamark the speed of two systems and compare meaninfully?
+***** How do I benchmark spee of two apps to chose between them?
+**** Memory Consumption
+***** How do I graph Overall sys mem usage over a chosen period to compare two systems?
+***** How do I compare mem usage of two apps to help decision?
+**** Battery usage
+***** Per sys
+***** Per app
+*** create a core sys
+*** create a base server sys
+    a first version, just to run backups etc, make that kimsufi machine work a little
+*** create a desktop sys
+    Just scaffold-based-on-core, nothing fancier, will be a lot of work on its own
+*** Start reducing
+    a real with-hunt, on every-app, every kernel module, every crufty stuff: what can I just throw away?
+    Do *NOT* focus on replacing, just detecting cruft, separation of concerns, not possible replacements for later
+*** Start replacing
+    There are lighter version of things I currently use, I should judge
+    each current thing that has alternatives, and seek a lighter one This
+    is not reasonable for apps I really do like (Emacs, etc), but there
+    are load of services with equally good alternatives, I shoudl seek
+    Some low hanging fruit:
+**** StumpWM
+     While it is really amazing, I do not use it in ways not covered by
+     its concurrents, I should bench, configure my usage on the main
+     tilingWM and pick one
+**** Browser
+     I must migrate from Chromium to a multi-browser solution, layered as such
+***** eww
+      Inside emacs itself, if something works on eww I should open it on eww
+***** Dillo
+      the ligtweithiest browser, lacks lot of features by design, maybe I
+      do not need it at all, maybe the pages that do not work on eww will
+      just not work on dillo at all anyway
+***** FireFox
+      For things needign javascript/flash or highly graphical pages, or
+      anything that does nto work on eww, I should fall back to FireFox,
+      it is not my dearest browser any longer, but is the only one still
+      somewhat commited to a level of freedom
+***** Chrome
+      Some things are just chrome-only, and the list will unfrotunately grow
+****** Netflix: http://www.omgubuntu.co.uk/2014/08/netflix-linux-html5-support-plugins
+**** See what packages the ultra-small distros use:
+***** damn small linux
+***** puppy
+***** What does Lubuntu install?
+***** What does Xubuntu Install?
+***** https://help.ubuntu.com/community/Installation/LowMemorySystems
+*** try to optimize
+**** run a search of ptimization articles for ubuntu
+*** try to harden
+**** run a search of improving ubuntu security
+**** run a search of existing sec tools and how o use them
+*** try to reduce battery consumption
+**** there is a program to make use of my videocards alternatively isntead of parallel and saving battery
+**** lesswatts ?
+**** other ubuntu/linux articles about reducing battery consumption?
+*** Make a real server sys
+    The whole she-bang
+*** Is docker for me?
+**** there is no reason for chrooting something instead of dokerizing it
+**** but docker is for things without state or temporary, dissapearing after use
+**** what packages do I have in that situation?
+***** Maybe my browser? in eternal kiosk?
+****** docker does gui apps :: http://stackoverflow.com/questions/16296753/can-you-run-gui-apps-in-a-docker-container
+****** but there is some overhead
+****** still subuser seems promising
+******* close with my dream on opening my browser with an unpriviledged user
+******* but still under heavy dev
+***** Surely at least spawning DBs/tomcats/etc for dev
+****** beats always having one in my dev machine
+****** but does it beats my current solution of vagranting up a VM?
+******* probably, probably will feel like the same thing just lighter
+******** I means I can even use Docker as a vagrant backend
+********* TODO can I suspend docker and then restore?
+***** One off things I want to test but do not thrust?
+****** do I have those yet?
+******* is it quick enough to build the needed dockerfile
+***** I do *not* want my own desktop on it
+****** While it is possible to put X/ssh/emacs/term/etc on a docker and connect to it and certainly a neat cloud idea
+******* Milk needs nto the overhead of such a thing, nor do I think I gain a lot
+***** Eclipse
+****** would allow me to control how much mem/process eclipse takes, not sure it is worth the hassle, I think not
+*** try to monitor
+**** What can I use as a monitor tool, what logs can I grok/digest?
+*** KVM as a virtualization solution?
+**** Can I have a vagrant backend for it?
+**** Can I convert my current VM to it?
+**** Is it worthy a change?
+**** How do I mesure Meme/cpu/battery consumption for a same virtual machine on vagrant vs kvm?
+** MalkOS-scaffold
+   A first throwable version, a less ambitious version that strives to be
+   a workign version of my current install, based on ubuntu desktop,
+   strives to be really identical-to-now but not broken
+*** How can I measure its power usage? memory consumption? battery consumption?
+*** can I just do a ' sudo update-manager -d ' ?
+**** what does the -d do?
+** MalkOS-core the base where MalkOS Server and Desktop will sit upon
+*** It will still be ubuntu
+    While I dream of other distros (Funtoo, archlinux, NixOS, or
+    LinuxMintDebienEdition); Ubuntu is the de-facto standard; projects
+    outside of the Community tend to support ubuntu first and test for
+    ubuntu, So I'll use ubuntu glibc, ubuntu coreutils, ubuntu pacakge
+    management etc might as well just endure ubuntu itself, it is a good
+    distro, not my shiny preferred ones, but it works, I have to deal
+    with accepting that
+**** Being ubuntu will mean it is not rolling
+     It is just not waht ubuntu is all about, their entire philosophy is
+     to have real releases, and rolling releases are not (for me that is
+     the point of them, not being releases at all), but this is not their
+     direction (http://www.markshuttleworth.com/archives/1228), they may
+     play with their frequency or other variables, but the primary
+     philosophy of working with releases will not change
+**** Cruft will build up
+     That is true for all distros, all of them, but that is bigger in the
+     debian family than in things like gentoo/arch, and that is a part of
+     the process
+     and if regularly cleaning the cruft with safer ways was easy, they'd
+     do it, they actually try and improve on thaat
+     that *does* mean, that from time to time it will be better 
+*** Do a ubuntu server install
+**** ubuntu-server is less bloated, has less things, also this will be the base for my server too, so
+**** there are still things to erase from it, begin with that, less is more
+***** old but gives a good idea : https://help.ubuntu.com/community/Diet%20Ubuntu
+***** old but also give good ideas : http://doc.ubuntu-fr.org/installation_minimale
+***** old but gives an idea :: http://xpressubuntu.wordpress.com/2014/02/22/how-to-install-a-minimal-ubuntu-desktop/
+**** I should compare packages installed with a full ubuntu and a server one and a minimal one, the 3 vanilla
+***** How do I compare a list of packges of two ubuntu installs?
+***** I should see which packages dissapear and why
+**** It changes releases with a do-release-upgrade, which is not gui
+**** yes There is a minimal cd iso
+     and it would be way better for my needs than ubuntu server
+     but it is *not* UEFI compatible yet! (
+     https://help.ubuntu.com/community/Installation/MinimalCD )
+     this may change someday, and if it does, I will probably adapt MalkOS to a mini-base
+**** there are tools to help me see what I need or not
+***** tasksel :: http://doc.ubuntu-fr.org/tasksel
+***** localepurge
+***** readahead
+***** htop
+***** hwinfo
+**** there are some guides for a server install
+***** https://help.ubuntu.com/community/ServerFaq
+***** http://www.ubuntugeek.com/step-by-step-ubuntu-12-04-precise-lamp-server-setup.html
+*** First just split and strive to be the same, then, experiment
+** MalkOs-server
+   For my kimsufi machine
+*** How can I fiddle with configuration for the specifics of that machine?
+**** What can I take away from the kernel?
+**** are there more packages that I can erase from the base?
+     there should not be! change the base!!!
+**** what can I change in conf here?
+***** something for the disks?
+***** power management?
+***** what else?
+*** Email server
+**** Dovecot+Postifx+Amavir+clamav+spamasassin :: http://doc.ubuntu-fr.org/utilisateurs/mcpeter/postfix_dovecot_mysql_postfixadmin
+***** http://rimuhosting.com/support/settingupemail.jsp
+**** http://en.wikipedia.org/wiki/Email_agent_(infrastructure)
+**** I do not want pop
+**** can I avoid installing a DB?
+*** Radicale for CalDAv+CardDav
+**** http://radicale.org/
+*** Do I want a Webserver? Apache? Nginx ?
+** MalkOS-Milk
+   For my laptop
+   yes, milk is now a laptop I'm not going back to having desktops again
+*** First version
+    Just MalkOS-scaffold but Malk-OS-core based, there will be lot of work just for that already
+** Packages to test
+*** scanmem is the cheatengine of linux
+*** ia32-libs to execute 32 bit files
+*** antivirus, anti malware
+*** security tools
+*** configure your fucking firewall
+*** bumblebee and drivers etc to juggle my two video cards
+*** avahi?
+*** shorewall?
+*** OffLineIMAP + Mu + Mu4E
